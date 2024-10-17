@@ -8,10 +8,38 @@
 import SwiftUI
 
 struct TopBarView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    @EnvironmentObject var currentUser: User
+
+    var body: some View {        
+        HStack {
+            // Profile icon on the left
+            Image(systemName: "person.circle")
+                .resizable()
+                .frame(width: 30, height: 30)
+                .padding()
+            Spacer()
+
+            // Coins or other items on the right
+            HStack(spacing: 20) {
+                // Coins
+                HStack {
+                    Image(systemName: "leaf.circle")
+                        .resizable()
+                        .frame(width: 25, height: 25)
+                    Text("\(currentUser.coins)")
+                        .font(.headline)
+                }
+
+                // You can add more items here, like notifications or other icons
+                Image(systemName: "bell")
+                    .resizable()
+                    .frame(width: 25, height: 25)
+                    .padding()
+            }
+        }
     }
 }
+
 
 #Preview {
     TopBarView()
