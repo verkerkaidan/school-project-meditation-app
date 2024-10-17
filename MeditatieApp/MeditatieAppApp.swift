@@ -15,3 +15,5 @@ struct MeditatieAppApp: App {
         }
     }
 }
+
+// Testing git connection
