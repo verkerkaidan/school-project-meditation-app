@@ -13,6 +13,7 @@ struct MeditationSessionListView: View {
     var body: some View {
         ScrollView {
             VStack (alignment: .trailing, spacing: 16) {
+                Spacer()
                 LazyVGrid(columns: [GridItem()], spacing: 16) {
                     ForEach(viewModel.sessions) { session in
                         VStack(alignment: .leading, spacing: 8) {

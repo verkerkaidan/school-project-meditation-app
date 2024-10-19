@@ -14,13 +14,13 @@ struct StoreView: View {
     var body: some View {
         
         ZStack {
-            Image(.background)
+            Image(currentUser.equippedBackground.lowercased().replacingOccurrences(of: " ", with: ""))
                 .resizable()
-                .scaledToFill()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                 .ignoresSafeArea()
             VStack() {
                 TopBarView().environmentObject(currentUser)
-                    .padding(-5)
                 Spacer()
                 Text("Store")
                     .font(.largeTitle)
@@ -32,7 +32,8 @@ struct StoreView: View {
                 
                 ScrollView {
                     Button {
-                        currentUser.unlockedCosmetics = []
+                        currentUser.unlockedHats = []
+                        currentUser.unlockedBackgrounds = []
                         UserManager.sharedUser.saveUser(currentUser)
                     } label: {
                         Image(.tophat)
@@ -50,7 +51,7 @@ struct StoreView: View {
                         ScrollView(.horizontal) {
                             LazyHGrid(rows: [GridItem()]) {
                                 ForEach(cosmeticManager.getAllHatCosmetics(), id: \.id) { cosmetic in
-                                    StoreItemView(item: cosmetic).environmentObject(currentUser)
+                                    HatStoreItemView(item: cosmetic).environmentObject(currentUser)
                                 }
                                 .padding()
                                 .background(Color.gray.opacity(0.5))
@@ -60,7 +61,7 @@ struct StoreView: View {
                         }
                         .padding(.horizontal)
                         
-                        Text("[Second Section]")
+                        Text("Backgrounds")
                             .font(.title2)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
@@ -68,8 +69,8 @@ struct StoreView: View {
                             .padding(.horizontal)
                         ScrollView(.horizontal) {
                             LazyHGrid(rows: [GridItem()]) {
-                                ForEach(cosmeticManager.getAllHatCosmetics(), id: \.id) { cosmetic in
-                                    StoreItemView(item: cosmetic).environmentObject(currentUser)
+                                ForEach(cosmeticManager.getAllBackgroundCosmetics(), id: \.id) { cosmetic in
+                                    BackgroundStoreItemView(item: cosmetic).environmentObject(currentUser)
                                 }
                                 .padding()
                                 .background(Color.gray.opacity(0.5))
@@ -79,7 +80,7 @@ struct StoreView: View {
                         }
                         .padding(.horizontal)
                         
-                        Text("[Third Section]")
+                        Text("Soundtracks")
                             .font(.title2)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
@@ -87,8 +88,8 @@ struct StoreView: View {
                             .padding(.horizontal)
                         ScrollView(.horizontal) {
                             LazyHGrid(rows: [GridItem()]) {
-                                ForEach(cosmeticManager.getAllHatCosmetics(), id: \.id) { cosmetic in
-                                    StoreItemView(item: cosmetic).environmentObject(currentUser)
+                                ForEach(cosmeticManager.getAllSoundtrackCosmetics(), id: \.id) { cosmetic in
+                                    SoundtrackStoreItemView(item: cosmetic).environmentObject(currentUser)
                                 }
                                 .padding()
                                 .background(Color.gray.opacity(0.5))
@@ -99,6 +100,7 @@ struct StoreView: View {
                         .padding(.horizontal)
                     }
                 }
+                Spacer(minLength: 100)
             }
         }
     }

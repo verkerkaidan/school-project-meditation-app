@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct MeditationSetupView: View {
-    @State var meditationTimeInSeconds: Double = 300
+    @State var meditationTimeInSeconds: Double = 600
     @State var inputText: String = ""
     @EnvironmentObject var currentUser: User
     
     var body: some View {
         NavigationView {
             ZStack {
-                Image(.background)
+                Image(currentUser.equippedBackground.lowercased().replacingOccurrences(of: " ", with: ""))
                     .resizable()
-                    .scaledToFill()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                     .ignoresSafeArea()
                 VStack {
                     Text("How long would you like to meditate for?")
@@ -27,9 +28,9 @@ struct MeditationSetupView: View {
                         .shadow(color: .black, radius: 2, x: 0, y: 1)
                         .padding()
                     VStack {
-                        Slider(value: $meditationTimeInSeconds, in: 60...14400, step: 60)
-                            .frame(width: 200, height: 50)
-
+                        Slider(value: $meditationTimeInSeconds, in: 60...7200, step: 60)
+                            .frame(width: 350, height: 50)
+                        
                         Text("Time: \(Int(meditationTimeInSeconds) / 60) minutes")
                             .font(.largeTitle)
                             .fontWeight(.bold)

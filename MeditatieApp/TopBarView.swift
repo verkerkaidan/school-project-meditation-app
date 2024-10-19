@@ -9,16 +9,21 @@ import SwiftUI
 
 struct TopBarView: View {
     @EnvironmentObject var currentUser: User
+    @State var isHistoryPresented: Bool = false
+    @State var isProfilePresented: Bool = false
 
-    var body: some View {        
+    var body: some View {
         HStack {
             // Profile icon on the left
             Image(systemName: "person.circle")
                 .resizable()
                 .frame(width: 30, height: 30)
                 .padding()
+                .onTapGesture {
+                    isProfilePresented.toggle()
+                }
             Spacer()
-
+            
             // Coins or other items on the right
             HStack(spacing: 20) {
                 // Coins
@@ -29,13 +34,23 @@ struct TopBarView: View {
                     Text("\(currentUser.coins)")
                         .font(.headline)
                 }
-
+                
                 // You can add more items here, like notifications or other icons
-                Image(systemName: "bell")
+                Image(systemName: "clock.arrow.circlepath")
                     .resizable()
                     .frame(width: 25, height: 25)
                     .padding()
+                    .onTapGesture {
+                        isHistoryPresented.toggle()
+                    }
             }
+        }
+        .padding(.top, 50)
+        .sheet(isPresented: $isHistoryPresented) {
+            MeditationSessionListView()
+        }
+        .sheet(isPresented: $isProfilePresented) {
+            ProfileView().environmentObject(currentUser)
         }
     }
 }

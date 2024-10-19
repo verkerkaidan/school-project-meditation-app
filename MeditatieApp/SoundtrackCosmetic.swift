@@ -1,0 +1,24 @@
+//
+//  HatCosmetic.swift
+//  MeditatieApp
+//
+//  Created by Aidan Verkerk on 16/10/2024.
+//
+
+import Foundation
+import SwiftUI
+
+struct SoundtrackCosmetic {
+    let id: Int
+    let name: String
+    let price: Int
+    let imageResource: Image?
+    
+    // Convenience initializer for image name
+    init(id: Int, name: String, price: Int, imageName: String) {
+        self.id = id
+        self.name = name
+        self.price = price
+        self.imageResource = Image(systemName: "music.note")
+    }
+}

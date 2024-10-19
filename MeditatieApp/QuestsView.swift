@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct QuestsView: View {
+    @EnvironmentObject var currentUser: User
+    
     var body: some View {
         ZStack {
-            Image(.background)
+            Image(currentUser.equippedBackground.lowercased().replacingOccurrences(of: " ", with: ""))
                 .resizable()
-                .scaledToFill()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                 .ignoresSafeArea()
             VStack {
                 VStack(alignment: .leading, spacing: 16) {

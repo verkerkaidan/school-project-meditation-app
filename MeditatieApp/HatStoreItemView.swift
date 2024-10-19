@@ -8,7 +8,7 @@
 import SwiftUI
 import UIKit
 
-struct StoreItemView: View {
+struct HatStoreItemView: View {
     var item: HatCosmetic
     @State var showAlert: Bool = false
     @EnvironmentObject var currentUser: User
@@ -33,10 +33,10 @@ struct StoreItemView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 75, height: 75)
             }
-            if !currentUser.unlockedCosmetics.contains(item.name) {
+            if !currentUser.unlockedHats.contains(item.name) {
                 Button {
                     if currentUser.coins >= item.price {
-                        currentUser.unlockCosmetic(item.name)
+                        currentUser.unlockHat(item.name)
                         currentUser.updateCoins(by: -item.price)
                     } else {
                         showAlert.toggle()
@@ -63,7 +63,7 @@ struct StoreItemView: View {
                 } label: {
                     Text("Already Owned")
                         .padding()
-                        .background(Color.teal)
+                        .background(Color.gray)
                         .foregroundColor(.white)
                         .cornerRadius(10)
                         .padding(.horizontal)

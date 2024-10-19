@@ -13,37 +13,82 @@ class User: ObservableObject, Identifiable, Codable {
     @Published var meditationsCompleted: Int
     @Published var minutesMeditated: Int
     @Published var achievements: [String: Bool]
-    @Published var unlockedCosmetics: [String]
+    @Published var unlockedHats: [String]
     @Published var equippedHat: String
+    @Published var unlockedBackgrounds: [String]
+    @Published var equippedBackground: String
+    @Published var unlockedSoundtracks: [String]
+    @Published var equippedSoundtrack: String
     
     let userManager = UserManager()
     
     enum CodingKeys: CodingKey {
-        case id, coins, meditationsCompleted, minutesMeditated, achievements, unlockedCosmetics, equippedHat
+        case id, coins, meditationsCompleted, minutesMeditated, achievements, unlockedHats, equippedHat, unlockedBackgrounds, equippedBackground, unlockedSoundtracks, equippedSoundtrack
     }
     
-    init(id: UUID, coins: Int, meditationsCompleted: Int, minutesMeditated: Int, achievements: [String: Bool], unlockedCosmetics: [String], equippedHat: String) {
+    init(id: UUID, coins: Int, meditationsCompleted: Int, minutesMeditated: Int, achievements: [String: Bool], unlockedHats: [String], equippedHat: String, unlockedBackgrounds: [String], equippedBackground: String, unlockedSoundtracks: [String], equippedSoundtrack: String) {
         self.id = id
         self.coins = coins
         self.meditationsCompleted = meditationsCompleted
         self.minutesMeditated = minutesMeditated
         self.achievements = achievements
-        self.unlockedCosmetics = unlockedCosmetics
+        self.unlockedHats = unlockedHats
         self.equippedHat = equippedHat
+        self.unlockedBackgrounds = unlockedBackgrounds
+        self.equippedBackground = equippedBackground
+        self.unlockedSoundtracks = unlockedSoundtracks
+        self.equippedSoundtrack = equippedSoundtrack
+        
+        self.unlockHat("Default Appearance")
+        self.equipHat("Default Appearance")
+        self.unlockBackground("Default Background")
+        self.equipBackground("Default Background")
+        self.unlockSoundtrack("Default")
+        self.equipSoundtrack("Default")
     }
     
     // Function to unlock a cosmetic
-    func unlockCosmetic(_ cosmeticName: String) {
-        if !unlockedCosmetics.contains(cosmeticName) {
-            unlockedCosmetics.append(cosmeticName)
+    func unlockHat(_ cosmeticName: String) {
+        if !unlockedHats.contains(cosmeticName) {
+            unlockedHats.append(cosmeticName)
             UserManager.sharedUser.saveUser(self)
         }
     }
     
     // Function to equip a cosmetic
-    func equipCosmetic(_ cosmeticName: String) {
-        if unlockedCosmetics.contains(cosmeticName) {
+    func equipHat(_ cosmeticName: String) {
+        if unlockedHats.contains(cosmeticName) {
             equippedHat = cosmeticName
+            userManager.saveUser(self)
+        }
+    }
+    
+    func unlockBackground(_ cosmeticName: String) {
+        if !unlockedBackgrounds.contains(cosmeticName) {
+            unlockedBackgrounds.append(cosmeticName)
+            UserManager.sharedUser.saveUser(self)
+        }
+    }
+    
+    // Function to equip a cosmetic
+    func equipBackground(_ cosmeticName: String) {
+        if unlockedBackgrounds.contains(cosmeticName) {
+            equippedBackground = cosmeticName
+            userManager.saveUser(self)
+        }
+    }
+    
+    func unlockSoundtrack(_ cosmeticName: String) {
+        if !unlockedSoundtracks.contains(cosmeticName) {
+            unlockedSoundtracks.append(cosmeticName)
+            UserManager.sharedUser.saveUser(self)
+        }
+    }
+    
+    // Function to equip a cosmetic
+    func equipSoundtrack(_ cosmeticName: String) {
+        if unlockedSoundtracks.contains(cosmeticName) {
+            equippedSoundtrack = cosmeticName
             userManager.saveUser(self)
         }
     }
@@ -100,9 +145,12 @@ class User: ObservableObject, Identifiable, Codable {
         meditationsCompleted = try container.decode(Int.self, forKey: .meditationsCompleted)
         minutesMeditated = try container.decode(Int.self, forKey: .minutesMeditated)
         achievements = try container.decode([String: Bool].self, forKey: .achievements)
-        unlockedCosmetics = try container.decode([String].self, forKey: .unlockedCosmetics)
+        unlockedHats = try container.decode([String].self, forKey: .unlockedHats)
         equippedHat = try container.decode(String.self, forKey: .equippedHat)
-        
+        unlockedBackgrounds = try container.decode([String].self, forKey: .unlockedBackgrounds)
+        equippedBackground = try container.decode(String.self, forKey: .equippedBackground)
+        unlockedSoundtracks = try container.decode([String].self, forKey: .unlockedSoundtracks)
+        equippedSoundtrack = try container.decode(String.self, forKey: .equippedSoundtrack)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -112,8 +160,12 @@ class User: ObservableObject, Identifiable, Codable {
         try container.encode(meditationsCompleted, forKey: .meditationsCompleted)
         try container.encode(minutesMeditated, forKey: .minutesMeditated)
         try container.encode(achievements, forKey: .achievements)
-        try container.encode(unlockedCosmetics, forKey: .unlockedCosmetics)
+        try container.encode(unlockedHats, forKey: .unlockedHats)
         try container.encode(equippedHat, forKey: .equippedHat)
+        try container.encode(unlockedBackgrounds, forKey: .unlockedBackgrounds)
+        try container.encode(equippedBackground, forKey: .equippedBackground)
+        try container.encode(unlockedSoundtracks, forKey: .unlockedSoundtracks)
+        try container.encode(equippedSoundtrack, forKey: .equippedSoundtrack)
     }
 }
 

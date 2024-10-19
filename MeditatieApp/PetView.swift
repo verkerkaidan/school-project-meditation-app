@@ -14,18 +14,18 @@ struct PetView: View {
 
     var body: some View {
         ZStack {
-            Image(eyesOpen ? .animal : .animalEyesClosed)
+            Image(currentUser.equippedHat.lowercased().replacingOccurrences(of: " ", with: ""))
                 .resizable()
                 .scaledToFit()
-                .frame(width: 250, height: 250)
-            if !currentUser.equippedHat.isEmpty {
-                let imageName = currentUser.equippedHat
-                Image(imageName.lowercased().replacingOccurrences(of: " ", with: ""))
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 250, height: 250)
-                    .offset(x: 0, y: -160)
-            }
+                .frame(width: 320, height: 320)
+//            if !currentUser.equippedHat.isEmpty {
+//                let imageName = currentUser.equippedHat
+//                Image(imageName.lowercased().replacingOccurrences(of: " ", with: ""))
+//                    .resizable()
+//                    .scaledToFit()
+//                    .frame(width: 250, height: 250)
+//                    .offset(x: 0, y: -160)
+//            }
         }
         .onAppear {
             startTimer()

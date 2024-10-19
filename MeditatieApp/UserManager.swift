@@ -30,7 +30,7 @@ class UserManager {
             return user
         }
         print("User data not found.")
-        return User(id: UUID(), coins: 0, meditationsCompleted: 0, minutesMeditated: 0, achievements: [:], unlockedCosmetics: [], equippedHat: "")
+        return User(id: UUID(), coins: 0, meditationsCompleted: 0, minutesMeditated: 0, achievements: [:], unlockedHats: [], equippedHat: "", unlockedBackgrounds: ["Default Background"], equippedBackground: "Default Background", unlockedSoundtracks: [], equippedSoundtrack: "")
     }
     
     // Clear the user data

@@ -27,11 +27,13 @@ struct AchievementsView: View {
         
     @State var achieved: Bool = false
         ZStack {
-            Image(.background)
+            Image(currentUser.equippedBackground.lowercased().replacingOccurrences(of: " ", with: ""))
                 .resizable()
-                .scaledToFill()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                 .ignoresSafeArea()
             ScrollView {
+                Spacer(minLength: 100)
                 Text("Achievements")
                     .font(.largeTitle)
                     .fontWeight(.bold)
@@ -52,6 +54,7 @@ struct AchievementsView: View {
                     }
                     .padding()
                 }
+                Spacer(minLength: 100)
             }
             .padding(.top, 30)
         }
@@ -101,5 +104,5 @@ struct AchievementCard: View {
 
 #Preview {
     AchievementsView()
-        .environmentObject(User(id: UUID(), coins: 0, meditationsCompleted: 3, minutesMeditated: 0, achievements: ["A Calm Start" : true], unlockedCosmetics: [], equippedHat: ""))
+        .environmentObject(User(id: UUID(), coins: 0, meditationsCompleted: 3, minutesMeditated: 0, achievements: ["A Calm Start" : true], unlockedHats: [], equippedHat: "", unlockedBackgrounds: [], equippedBackground: "defaultBackground", unlockedSoundtracks: [], equippedSoundtrack: ""))
 }
