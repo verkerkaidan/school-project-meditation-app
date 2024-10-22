@@ -47,7 +47,6 @@ class User: ObservableObject, Identifiable, Codable {
         self.equipSoundtrack("Default")
     }
     
-    // Function to unlock a cosmetic
     func unlockHat(_ cosmeticName: String) {
         if !unlockedHats.contains(cosmeticName) {
             unlockedHats.append(cosmeticName)
@@ -55,7 +54,6 @@ class User: ObservableObject, Identifiable, Codable {
         }
     }
     
-    // Function to equip a cosmetic
     func equipHat(_ cosmeticName: String) {
         if unlockedHats.contains(cosmeticName) {
             equippedHat = cosmeticName
@@ -70,7 +68,6 @@ class User: ObservableObject, Identifiable, Codable {
         }
     }
     
-    // Function to equip a cosmetic
     func equipBackground(_ cosmeticName: String) {
         if unlockedBackgrounds.contains(cosmeticName) {
             equippedBackground = cosmeticName
@@ -85,7 +82,6 @@ class User: ObservableObject, Identifiable, Codable {
         }
     }
     
-    // Function to equip a cosmetic
     func equipSoundtrack(_ cosmeticName: String) {
         if unlockedSoundtracks.contains(cosmeticName) {
             equippedSoundtrack = cosmeticName
@@ -112,7 +108,7 @@ class User: ObservableObject, Identifiable, Codable {
     
     func unlockAchievement(_ achievement: String) {
         achievements[achievement] = true
-        updateCoins(by: 100) // Reward for unlocking achievement
+        updateCoins(by: 100)
         UserManager.sharedUser.saveUser(self)
     }
     
@@ -137,7 +133,6 @@ class User: ObservableObject, Identifiable, Codable {
         }
     }
     
-    // Custom encoding and decoding because of @Published
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(UUID.self, forKey: .id)

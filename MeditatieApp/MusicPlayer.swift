@@ -18,7 +18,7 @@ class MusicPlayer: ObservableObject {
                 print("Playing music")
                 print(fileName + ".mp3")
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
-                audioPlayer?.numberOfLoops = -1 // Loop the music infinitely
+                audioPlayer?.numberOfLoops = -1
                 audioPlayer?.play()
             } catch {
                 print("Error playing music: \(error.localizedDescription)")

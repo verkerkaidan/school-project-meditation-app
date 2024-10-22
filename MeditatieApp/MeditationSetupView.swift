@@ -60,9 +60,10 @@ struct MeditationSetupView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
-
-#Preview {
-    MeditationSetupView()
-}
+    
+    #Preview {
+        MeditationSetupView()
+    }

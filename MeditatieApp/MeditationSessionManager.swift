@@ -10,7 +10,6 @@ import Foundation
 class MeditationSessionManager: ObservableObject {    
     private let sessionsKey = "meditationData"
     
-    // Save a session
     func saveSession(_ session: MeditationSession) {
         var sessions = loadSessions()
         sessions.append(session)
@@ -20,7 +19,6 @@ class MeditationSessionManager: ObservableObject {
         }
     }
     
-    // Load all sessions
     func loadSessions() -> [MeditationSession] {
         if let data = UserDefaults.standard.data(forKey: sessionsKey),
            let sessions = try? JSONDecoder().decode([MeditationSession].self, from: data) {

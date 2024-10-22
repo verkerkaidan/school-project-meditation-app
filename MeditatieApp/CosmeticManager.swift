@@ -9,24 +9,18 @@ import Foundation
 import SwiftUI
 import UIKit
 
-// Define a model for the Cosmetic Item
-
-// Manager class to handle available cosmetics
 class CosmeticManager {
     
-    // Array to store available cosmetics
     var allHats: [HatCosmetic] = []
     var allBackgrounds: [BackgroundCosmetic] = []
     var allSoundtracks: [SoundtrackCosmetic] = []
     
-    // Initializer to set up the available cosmetics
     init() {
         loadAvailableHats()
         loadAvailableBackgrounds()
         loadAvailableSoundtracks()
     }
     
-    // Load predefined cosmetics
     private func loadAvailableHats() {
         allHats = [
             HatCosmetic(id: 1, name: "Wizard", price: 50, imageName: "wizard"),
@@ -69,7 +63,6 @@ class CosmeticManager {
         ]
     }
     
-    // Fetch all available cosmetics
     func getAllHatCosmetics() -> [HatCosmetic] {
         return allHats
     }
@@ -82,17 +75,14 @@ class CosmeticManager {
         return allSoundtracks
     }
     
-    // Get a cosmetic by its ID
     func getHatCosmetic(byId id: Int) -> HatCosmetic? {
         return allHats.first { $0.id == id }
     }
     
-    // Add a new cosmetic to the list (optional feature)
     func addHatCosmetic(item: HatCosmetic) {
         allHats.append(item)
     }
     
-    // Remove a cosmetic by ID (optional feature)
     func removeHatCosmetic(byId id: Int) {
         allHats.removeAll { $0.id == id }
     }

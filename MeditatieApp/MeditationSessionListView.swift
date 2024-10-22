@@ -82,9 +82,6 @@ class MeditationSessionViewModel: ObservableObject {
     }
     
     func loadSessions() {
-        //        let sampleSession1 = MeditationSession(duration: 1500)
-        //        manager.saveSession(sampleSession1)
-        
         sessions = manager.loadSessions()
     }
     

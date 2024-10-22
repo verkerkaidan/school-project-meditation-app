@@ -34,6 +34,7 @@ struct StoreView: View {
                     Button {
                         currentUser.unlockedHats = []
                         currentUser.unlockedBackgrounds = []
+                        currentUser.unlockedSoundtracks = []
                         UserManager.sharedUser.saveUser(currentUser)
                     } label: {
                         Image(.tophat)

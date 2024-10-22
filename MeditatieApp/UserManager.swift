@@ -13,7 +13,6 @@ class UserManager {
     
     private let userKey = "userData"
     
-    // Save the user
     func saveUser(_ user: User) {
         if let encoded = try? JSONEncoder().encode(user) {
             UserDefaults.standard.set(encoded, forKey: userKey)
@@ -22,7 +21,6 @@ class UserManager {
         }
     }
     
-    // Load the user
     func loadUser() -> User {
         if let data = UserDefaults.standard.data(forKey: userKey),
            let user = try? JSONDecoder().decode(User.self, from: data) {
@@ -33,7 +31,6 @@ class UserManager {
         return User(id: UUID(), coins: 0, meditationsCompleted: 0, minutesMeditated: 0, achievements: [:], unlockedHats: [], equippedHat: "", unlockedBackgrounds: ["Default Background"], equippedBackground: "Default Background", unlockedSoundtracks: [], equippedSoundtrack: "")
     }
     
-    // Clear the user data
     func clearUser() {
         UserDefaults.standard.removeObject(forKey: userKey)
     }

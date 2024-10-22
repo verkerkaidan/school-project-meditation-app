@@ -74,7 +74,3 @@ struct SoundtrackStoreItemView: View {
         }
     }
 }
-
-//#Preview {
-//    StoreItemView(item: .constant(Cosmetic(id: UUID(), name: "top hat", type: .hat, image: .tophat, soundFileName: nil, unlocked: false, price: 350)))
-//}

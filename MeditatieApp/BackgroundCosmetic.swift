@@ -14,7 +14,6 @@ struct BackgroundCosmetic {
     let price: Int
     let imageResource: Image?
     
-    // Convenience initializer for image name
     init(id: Int, name: String, price: Int, imageName: String) {
         self.id = id
         self.name = name

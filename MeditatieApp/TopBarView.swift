@@ -14,7 +14,6 @@ struct TopBarView: View {
 
     var body: some View {
         HStack {
-            // Profile icon on the left
             Image(systemName: "person.circle")
                 .resizable()
                 .frame(width: 30, height: 30)
@@ -24,9 +23,7 @@ struct TopBarView: View {
                 }
             Spacer()
             
-            // Coins or other items on the right
             HStack(spacing: 20) {
-                // Coins
                 HStack {
                     Image(systemName: "leaf.circle")
                         .resizable()
@@ -35,7 +32,6 @@ struct TopBarView: View {
                         .font(.headline)
                 }
                 
-                // You can add more items here, like notifications or other icons
                 Image(systemName: "clock.arrow.circlepath")
                     .resizable()
                     .frame(width: 25, height: 25)

@@ -24,7 +24,7 @@ struct ChangeAppearanceView: View {
                     .shadow(color: .black, radius: 2, x: 0, y: 1)
             }
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHGrid(rows: [GridItem(.fixed(120))], spacing: 20) { // Adjust the row height and spacing as needed
+                LazyHGrid(rows: [GridItem(.fixed(120))], spacing: 20) {
                     ForEach(currentUser.unlockedHats, id: \.self) { cosmetic in
                         Button {
                             currentUser.equipHat(cosmetic)
@@ -45,14 +45,14 @@ struct ChangeAppearanceView: View {
                                 RoundedRectangle(cornerRadius: 16)
                                     .fill(Color(.systemGray6))
                                     .shadow(radius: 5)
-                                    .opacity(cosmetic == currentUser.equippedHat ? 0.8 : 0.4) // Conditional opacity
+                                    .opacity(cosmetic == currentUser.equippedHat ? 0.8 : 0.4)
                             )
                         }
                         .buttonStyle(PlainButtonStyle())
                         .padding(.vertical, 5)
                     }
                 }
-                .padding(.horizontal) // Add padding around the grid for a better look
+                .padding(.horizontal)
             }
             VStack(alignment: .leading) {
                 Text("Background")
@@ -61,7 +61,7 @@ struct ChangeAppearanceView: View {
                     .shadow(color: .black, radius: 2, x: 0, y: 1)
             }
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHGrid(rows: [GridItem(.fixed(120))], spacing: 20) { // Adjust the row height and spacing as needed
+                LazyHGrid(rows: [GridItem(.fixed(120))], spacing: 20) {
                     ForEach(currentUser.unlockedBackgrounds, id: \.self) { cosmetic in
                         Button {
                             currentUser.equipBackground(cosmetic)
@@ -83,14 +83,14 @@ struct ChangeAppearanceView: View {
                                 RoundedRectangle(cornerRadius: 16)
                                     .fill(Color(.systemGray6))
                                     .shadow(radius: 5)
-                                    .opacity(cosmetic == currentUser.equippedBackground ? 0.75 : 0.5) // Conditional opacity
+                                    .opacity(cosmetic == currentUser.equippedBackground ? 0.75 : 0.5)
                             )
                         }
                         .buttonStyle(PlainButtonStyle())
                         .padding(.vertical, 5)
                     }
                 }
-                .padding(.horizontal) // Add padding around the grid for a better look
+                .padding(.horizontal)
             }
             
             VStack(alignment: .leading) {
@@ -100,7 +100,7 @@ struct ChangeAppearanceView: View {
                     .shadow(color: .black, radius: 2, x: 0, y: 1)
             }
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHGrid(rows: [GridItem(.fixed(120))], spacing: 20) { // Adjust the row height and spacing as needed
+                LazyHGrid(rows: [GridItem(.fixed(120))], spacing: 20) {
                     ForEach(currentUser.unlockedSoundtracks, id: \.self) { cosmetic in
                         Button {
                             currentUser.equipSoundtrack(cosmetic)
@@ -122,14 +122,14 @@ struct ChangeAppearanceView: View {
                                 RoundedRectangle(cornerRadius: 16)
                                     .fill(Color(.systemGray6))
                                     .shadow(radius: 5)
-                                    .opacity(cosmetic == currentUser.equippedSoundtrack ? 0.75 : 0.5) // Conditional opacity
+                                    .opacity(cosmetic == currentUser.equippedSoundtrack ? 0.75 : 0.5)
                             )
                         }
                         .buttonStyle(PlainButtonStyle())
                         .padding(.vertical, 5)
                     }
                 }
-                .padding(.horizontal) // Add padding around the grid for a better look
+                .padding(.horizontal)
             }
         }
     }
