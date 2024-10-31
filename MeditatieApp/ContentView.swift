@@ -32,12 +32,6 @@ struct ContentView: View {
                         Label("Meditate", systemImage: "brain.head.profile")
                     }
                 
-//                QuestsView().environmentObject(currentUser)
-//                    .toolbarBackgroundVisibility(.visible, for: .tabBar)
-//                    .tabItem {
-//                        Label("Quests", systemImage: "flag")
-//                    }
-                
                 StoreView().environmentObject(currentUser)
                     .toolbarBackgroundVisibility(.visible, for: .tabBar)
                     .tabItem {
@@ -45,6 +39,7 @@ struct ContentView: View {
                     }
             }
         }
+        .preferredColorScheme(.dark)
     }
 }
 

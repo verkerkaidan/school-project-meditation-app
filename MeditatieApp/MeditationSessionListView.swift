@@ -37,15 +37,6 @@ struct MeditationSessionListView: View {
                         .padding(.vertical, 4)
                     }
                 }
-                Button {
-                    viewModel.loadSessions()
-                } label: {
-                    Text("Clear Data")
-                        .font(.subheadline)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .shadow(color: .black, radius: 2, x: 0, y: 1)
-                }
                 .padding()
                 .onAppear() {
                     viewModel.loadSessions()

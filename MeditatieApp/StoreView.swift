@@ -31,17 +31,6 @@ struct StoreView: View {
                     .padding(.top, 30)
                 
                 ScrollView {
-                    Button {
-                        currentUser.unlockedHats = []
-                        currentUser.unlockedBackgrounds = []
-                        currentUser.unlockedSoundtracks = []
-                        UserManager.sharedUser.saveUser(currentUser)
-                    } label: {
-                        Image(.tophat)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100, height: 100)
-                    }
                     LazyVGrid(columns: [GridItem()]) {
                         Text("Hats")
                             .font(.title2)
@@ -99,6 +88,21 @@ struct StoreView: View {
                             .padding(.horizontal)
                         }
                         .padding(.horizontal)
+                        
+//                        Button {
+//                            currentUser.unlockedHats = []
+//                            currentUser.unlockedBackgrounds = []
+//                            currentUser.unlockedSoundtracks = []
+//                            UserManager.sharedUser.saveUser(currentUser)
+//                        } label: {
+//                            Text("Reset Unlocks (Dev)")
+//                                .font(.headline)
+//                                .foregroundColor(.blue)
+//                                .padding(10)
+//                                .background(Color.gray.opacity(0.2))
+//                                .cornerRadius(8)
+//                        }
+                        
                     }
                 }
                 Spacer(minLength: 100)

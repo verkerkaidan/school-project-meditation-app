@@ -38,6 +38,7 @@ class User: ObservableObject, Identifiable, Codable {
         self.equippedBackground = equippedBackground
         self.unlockedSoundtracks = unlockedSoundtracks
         self.equippedSoundtrack = equippedSoundtrack
+
         
         self.unlockHat("Default Appearance")
         self.equipHat("Default Appearance")

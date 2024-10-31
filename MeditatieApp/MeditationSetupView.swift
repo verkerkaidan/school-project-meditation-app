@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct MeditationSetupView: View {
-    @State var meditationTimeInSeconds: Double = 600
     @State var inputText: String = ""
     @EnvironmentObject var currentUser: User
+    @State var meditationTimeInSeconds: Double = 600
     
     var body: some View {
         NavigationView {
@@ -63,7 +63,7 @@ struct MeditationSetupView: View {
         .navigationBarBackButtonHidden(true)
     }
 }
-    
-    #Preview {
-        MeditationSetupView()
-    }
+
+#Preview {
+    MeditationSetupView()
+}

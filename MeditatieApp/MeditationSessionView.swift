@@ -59,11 +59,16 @@ struct MeditationSessionView: View {
                     Spacer()
                     
                     PetView()
-                    Button {
-                        timeRemaining = 3
-                    } label: {
-                        Text("Skip Timer")
-                    }
+//                    Button {
+//                        timeRemaining = 3
+//                    } label: {
+//                        Text("Skip Timer (Dev)")
+//                            .font(.headline)
+//                            .foregroundColor(.white)
+//                            .padding(10)
+//                            .background(Color.gray.opacity(0.2))
+//                            .cornerRadius(8)
+//                    }
                     
                     NavigationLink(destination: MeditationSetupView(), isActive: $navigateToHome) {
                         EmptyView()
