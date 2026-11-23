@@ -16,6 +16,10 @@ An iOS meditation app built with SwiftUI as a school project at Hogeschool Leide
 
 I built the entire app on my own: design, SwiftUI views, data models, persistence, the store and cosmetics system, achievements, audio playback, and the pet animation.
 
+## A note on the artwork
+
+The artwork in this app (the pet, hats and backgrounds) was generated with AI. I wasn't aware of the ethical problems with AI art back then, and I regret using it. I dislike AI art because it is built on the work of artists who never agreed to it and were never paid for it. If I rebuilt this app today, I would commission an artist or use properly licensed work instead.
+
 ## Tech stack
 
 - Swift 5 and SwiftUI
