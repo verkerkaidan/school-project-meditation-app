@@ -48,8 +48,8 @@ MeditatieApp/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/verkerkaidan/meditatieapp.git
-   cd meditatieapp
+   git clone https://github.com/verkerkaidan/school-project-meditation-app.git
+   cd school-project-meditation-app
    ```
 2. Open the project:
    ```bash
